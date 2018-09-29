@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+    #trivia{
+        display:inline-block;
+        width: 300px;
+        height: 300px;
+        background-color: aqua;
+        margin: 5px;
+        vertical-align: top;
+        padding-left: 5px;
+    }
+    label{
+        margin-left: 5px;
+    }
+    </style>
+  </head>
+  <body>
+        <h1>Trivia Night</h1>
+        <div  class="container" id="questions"></div>
+    <script>
+        $(document).ready(function(){
+            $.get("https://opentdb.com/api.php?amount=10", function(data){
+                var questions = "";
+                // console.log(data['results'])
+                for(let i=0; i < data['results'].length;i++){
+                    questions += "<div id='trivia'><h4>"+ data['results'][i]['question'] +"</h4><h6>("+data['results'][i]['category']+")</h6><form><div><input id='answer' name='q' type='radio' value='1'><label>"+data['results'][i]['correct_answer']+"</label></div>";
+                    for(let j=0;j< data['results'][i]['incorrect_answers'].length;j++){
+                        questions += "<div><input id='answer' name='q' type='radio' value='2'><label>"+data['results'][i]['incorrect_answers'][j]+"</label></div>"
+                    }
+                    questions += "</form></div>"
+                }
+                $('#questions').html(questions);
+                $('input').on('click', function(){
+                    alert(document.getElementById('answer').value)
+                    console.log($('input').attr('value'))
+                })
+            })
+        })
+    </script>
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

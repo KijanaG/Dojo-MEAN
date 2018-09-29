@@ -1,0 +1,12 @@
+<div style="text-align:center">
+    <h1>Buy ShintoCoins</h1>
+    <br>
+    <h2>Current ShintoCoin Value: ${{currentPrice}}.00</h2>
+    <br>
+    <h2>Number of ShintoCoins Owned: {{totalOwned}}</h2>
+    <h3 *ngIf="response">{{response}}</h3>
+    <form (ngSubmit)="buyCoin()">
+        <input type="text" name="buy.amount" [(ngModel)]="buy.amount"> 
+        <input type="submit" value="Buy">
+      </form>
+</div>

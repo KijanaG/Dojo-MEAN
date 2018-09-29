@@ -1,0 +1,18 @@
+<div style="text-align:center">
+    <h1>
+      Favorite Authors
+    </h1>
+  <br>
+  <h4 [routerLink]="['/']" ><u>Home</u></h4>
+  <br>
+  </div>
+  <div class="container">
+    <h3>Edit a new author:</h3>
+    <h3 *ngIf="response">{{response}}</h3>
+    <form (submit)="editAuthor()">
+        <label for="name">Name:</label>
+        <input type="text" name="author.name" [(ngModel)]="author.name">
+        <button>Cancel</button>
+        <input type="submit" value="Submit">
+      </form>
+  </div>

@@ -1,0 +1,39 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+<h1>Rate my cakes</h1>
+</div>
+<div class="container" id="inputs">
+<div id="submitCake">
+<h3>Submit a cake to be rated</h3>
+<hr>
+<form (submit)="onSubmit(newCake)">
+  <table class="table">
+    <tbody>
+      <tr><h3><label for="baker">Baker Name:</label></h3></tr>
+      <tr><input type="text" name="newCake.baker" [(ngModel)]="newCake.baker"></tr>
+      <tr><h3><label for="iamge">Image url:</label></h3></tr>
+      <tr><input type="text" name="newCake.image" [(ngModel)]="newCake.image" ></tr>
+      <tr><input type="submit" value="SUBMIT"></tr>
+    </tbody>
+  </table>
+</form>
+</div>
+<div id="rateCake">
+  <div class="eachCake" *ngFor="let cake of cakes">
+    <form (submit)="submitRating(cake._id, newRating)">
+    <img src="{{cake.image}}" alt="cake" (click)="getOneCake(cake._id)">
+    <select name="newRating.stars" id="starCount" class="rating" [(ngModel)]="newRating.stars">
+      <option value="1">1 Star</option>
+      <option value="2">2 Stars</option>
+      <option value="3">3 Stars</option>
+      <option value="4">4 Stars</option>
+      <option value="5">5 Stars</option>
+    </select>
+    <textarea name="newRating.comment" cols="40" rows="5" class="rating" [(ngModel)]="newRating.comment" placeholder="Type your comment here"></textarea>
+    <input type="submit" value="Rate!" id="submitRating">
+  </form>
+  </div>
+</div>
+</div>
+<app-cake *ngIf="cake" [cakeShow]="cake" [cakesAverage]="average"></app-cake>
+

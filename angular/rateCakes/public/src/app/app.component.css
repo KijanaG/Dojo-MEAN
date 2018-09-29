@@ -1,0 +1,51 @@
+h1 {
+    float: left;
+}
+#inputs {
+    /* border: 1px solid black; */
+    height: 400px;
+}
+#submitCake {
+    float: left;
+    width: 30%;
+    height: 100%;
+    border: 1px dashed blue;
+}
+#rateCake {
+    float: right;
+    width: 60%;
+    height: 100%;
+    /* border: 1px dashed red; */
+    overflow: scroll;
+}
+.eachCake {
+height: 200px;
+width: 100%;
+/* border: 1px dotted orange; */
+display: block;
+}
+img {
+    width: 270px;
+    height: 180px;
+    float: left;
+}
+tbody > tr > input {
+    margin: 10px;
+}
+h3 {
+    margin: 10px 0px 10px 10px;
+}
+hr {
+    border: 1.25px solid grey;
+}
+#starCount{
+    width: 45%;
+}
+.rating{
+    margin: 10px 0px 0px 40px;
+}
+#submitRating{
+    float: left;
+    display: block;
+    margin-left: 40px;
+}

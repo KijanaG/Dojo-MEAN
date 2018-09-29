@@ -1,0 +1,33 @@
+.col-sm-2{
+    background-color: lightblue;
+    margin-left: 10px;
+    border-radius: 10px; 
+    height: 200px;
+  }
+  .text-body{
+    background-color: blanchedalmond; 
+    width: 700px; 
+    height: 200px; 
+    margin-top: 50px; 
+    overflow: scroll;
+    border: 2px solid rgb(70, 24, 39);
+  }
+  .btn{
+    margin-left: 0 auto;
+    box-shadow: 2px 2px goldenrod;
+    border: 0px;
+    background: radial-gradient(rgb(11, 2, 41), rgb(151, 142, 9) 0%, rgb(17, 1, 85))
+  }
+  h1 {
+    font-size: 200%;
+    margin-left: 30px;
+  }
+  h5 {
+    margin: 20px auto;
+  }
+  #top{ 
+    background-color: antiquewhite; 
+    width: 255px; 
+    margin: 80px auto; 
+    border-radius: 10px;
+  }

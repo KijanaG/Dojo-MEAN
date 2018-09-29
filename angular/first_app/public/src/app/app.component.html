@@ -1,0 +1,43 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center" class="container">
+  <h1>
+    Restful Tasks Api
+  </h1>
+  <div style="text-align: center" class="tasks">  
+    <button id="get_all" (click)="getTasksFromService()">GET ALL TASKS</button>
+    <button id="get_all" (click)="hideTasks()">HIDE TASKS</button>
+    <br>
+    <div class="task" *ngFor="let task of tasks">
+      <h3>{{task.title}}</h3>
+      <button id="show_all" (click)="getOneFromService(task._id)" value="{{task._id}}">Show</button>
+      <button id="show_all" (click)="getOneToEdit(task._id)" value="{{task._id}}">Edit</button>
+      <button id="show_all" (click)="deleteOneFromService(task._id)" value="{{task._id}}">Delete</button>
+    </div> 
+    <app-task *ngIf="task" [taskToShow]="task"></app-task>
+  </div>
+  <div class="tasks">
+    <form (submit)="onSubmit(newTask)">
+      <!-- <h2> {{ newTask | json }}</h2> -->
+      <h2 id="get_all" style="margin: 5px auto; text-align: center; height: 30px; color: aquamarine">ADD A TASK</h2>
+      <br>
+      <label for="title">Task</label>
+      <input type="text" name="newTask.title" [(ngModel)]="newTask.title">
+      <label for="description">Decription</label>
+      <input type="text" name="newTask.description" [(ngModel)]="newTask.description">
+      <input type="submit" value="Add New Task" id="submit">
+    </form>
+    <h2 id="get_all" style="margin: 5px auto; text-align: center; height: 30px; color: aquamarine">EDIT A TASK</h2>
+      <label for="title">Task</label>
+      <input type="text" name="editTask.title" style="width:20vh;" [(ngModel)]="editTask.title" [placeholder]="editTask.title">
+      <label for="description">Decription</label>
+      <input type="text" name="editTask.description"  style="width: 30vh;" [(ngModel)]="editTask.description" [placeholder]="editTask.description">
+      <button (click)=editOneFromService(editTask._id,editTask.title,editTask.description) id="get_all" style="margin: 5px auto; text-align: center; height: 30px; color: aquamarine">Edit</button>
+    </div>
+  <!-- <div class="desc">
+
+  </div> -->
+  <!-- <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="> -->
+</div>
+
+<!-- <h3>{{tasks[2]?.title}} – {{tasks[2]?.description}}</h3> -->
+

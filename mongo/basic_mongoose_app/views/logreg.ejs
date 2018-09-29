@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <title>Registration Form</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <style>
+        #window {
+            width: 100%; 
+            height: 110vh; 
+            background: linear-gradient(to right, grey, white, grey); 
+            padding-top: 30px;
+        }
+        #login {
+            width: 320px; 
+            height: 265px; 
+            border-radius: 10px; 
+            padding-top: 10px; 
+            display: block; 
+            background-image: linear-gradient(to bottom, #a7cfdf, #23538ac9);
+        }
+        #login_title {
+            margin-left: 90px;
+        }
+        #top {
+            margin: 0px 0px 10px 6px;
+        }
+        #container{
+            width:300px; 
+            border-radius: 10px; 
+            padding-top: 15px; 
+            display: block; 
+            margin-top: 15px; 
+            background-image: linear-gradient(to bottom, #d2d2f9, #a6a6f2);
+        }
+        .btn-lg {
+            margin: 0px 0px 10px 6px; 
+            justify-content: center;
+        }
+        p {
+            color: rgba(225, 64, 64, 0.631);
+        }
+        </style>
+    </head>
+
+    <body>
+        <div id="window">
+            <div class="container" id="login">
+                <h2 id="login_title"> Login </h2>
+                <% if(messages.login) { %>
+                    <% for(var x of messages.login) { %>
+                        <p> <%= x %> </p>
+                    <%}%>
+                <%}%>
+                <form action="/login" method="POST" class="float-right" style="margin-left: 40px;">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <div class="col-2 form-group">Email:
+                                    <input type="text" name="email">
+                                </div>
+                            </tr>
+                            <tr>
+                                <div class="col-2 form-group">Password:
+                                    <input type="password" name="password">
+                                </div>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="margin-left: 10px;">
+                        <input class="btn btn-info" id="top" type="submit" value="Submit">
+                    </div>
+                </form>
+            </div>
+    <!-- ################################################################################################################################################### -->
+            <div class="container" id="container">
+                    <% if(messages.registration) { %>
+                        <% for(var x of messages.registration) { %>
+                            <p> <%= x %> </p>
+                        <%}%>
+                    <%}%>
+                <h2 id="reg_title" style="margin-left: 48px;"> Registration </h2>
+                <% if(messages.name) { %>
+                    <% for(var x of messages.name) { %>
+                        <p> <%= x %> </p>
+                    <%}%>
+                <%}%>
+                <form action="/registration" method="POST" class="float-right" style="margin-left: 35px;">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <div class="col-7 form-group">First Name:
+                                    <input type="text" name="first_name">
+                                </div>
+                            </tr>
+                            <tr>
+                                <div class="col-7 form-group">Last Name:
+                                    <input type="text" name="last_name">
+                                </div>
+                            </tr>
+                            <tr>
+                                <% if(messages.email) { %>
+                                    <% for(var x of messages.email) { %>
+                                        <p> <%= x %> </p>
+                                    <%}%>
+                                <%}%>
+                                <div class="col-2 form-group">Email:
+                                    <input type="text" name="email">
+                                </div>
+                            </tr>
+                            <tr>
+                                <% if(messages.password) { %>
+                                    <% for(var x of messages.password) { %>
+                                        <p> <%= x %> </p>
+                                    <%}%>
+                                <%}%>
+                                <div class="col-2 form-group">Password:
+                                    <input type="password" name="password">
+                                </div>
+                            </tr>
+                            <tr>
+                                <div class="col-7 form-group">Confirm Password:
+                                    <input type="password" name="confirm">
+                                </div>
+                            </tr>
+                            <tr>
+                                <% if(messages.bday) { %>
+                                    <% for(var x of messages.bday) { %>
+                                        <p> <%= x %> </p>
+                                    <%}%>
+                                <%}%>
+                                <div class="col-7 form-group">Birthday:
+                                    <input type="date" name="birthdate" max="2009-01-01" min="1910-01-01">
+                                </div>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="margin-left: 10px;">
+                        <input class="btn btn-info btn-lg" type="submit" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            $('#container').css({'height':'auto','display':'table'})
+            $('#login').css({'height':'auto','display':'table'})
+        </script>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    </body>
+
+</html>

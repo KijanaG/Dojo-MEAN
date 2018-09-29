@@ -1,0 +1,9 @@
+<div class="container" *ngFor="let cake of cakeShow" id="oneCake">
+<h2>Baked by: {{cake.baker}}</h2>
+<img src="{{cake.image}}" alt="cake">
+  <h4 *ngIf="cakesAverage" id="avg">Average Rating: {{cakesAverage}}</h4>
+  <div class="ratings" *ngFor="let rating of cake.rating">  
+    <h4>{{rating.comment}}</h4>
+    <h4>{{rating.stars}} stars</h4>
+  </div>
+</div>

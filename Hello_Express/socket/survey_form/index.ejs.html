@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript">
+        $(document).ready(function (){
+    
+            var socket = io(); //1
+    
+            socket.on('greeting', function (data) { //4
+                console.log(data.msg); //5
+                socket.emit('thankyou', { msg: 'Thank you for connecting me! -Client' }); //6
+            });
+            $('#postio').click(function(data){
+                socket.emit('posting_form', {name: $('#name').val(),location: $('#location').val(),language:$('#language').val(), message:$('#message').val()});
+            });
+            socket.on('updated_message', function(data){
+                console.log(data.random);
+                $('.container').prepend("<h6>"+JSON.stringify(data.data)+"</h6><br>");
+                $('#top').prepend("<h3>Your random number is: "+data.random+"</h3>");
+            });
+         })
+    </script>
+  </head>
+  <body>
+      <div class="container" style="width: 700px; margin-top: 100px; border: 20px dashed blanchedalmond; padding: 5px;">
+            <div  id="top" class="form-group row">
+                <label for="validationServer01" class="col-sm-2 col-form-label"> Name: </label>
+                <div class="col-sm-10">
+                    <input id="name" name = "name" class="form-control" placeholder="Enter Full Name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="validationServer01" class="col-sm-2 col-form-label"> Dojo Location </label>
+                <div class="col-lg-10">
+                    <select id="location" class="form-control" name="location">
+                        <option>Seattle</option>
+                        <option>San Jose</option>
+                        <option>Burbank</option>
+                        <option>Dallas</option>
+                        <option>Chicago</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="validationServer01" class="col-sm-2 col-form-label"> Favorite Language </label>
+                <div class="col-lg-10">
+                    <select id="language" class="form-control" name="language">
+                        <option>Python</option>
+                        <option>HTML & CSS</option>
+                        <option>Java</option>
+                        <option>JavaScript</option>
+                        <option>Ruby</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Comment (optional):</label>
+                <textarea class="form-control" id="message" rows="3" name="message"></textarea>
+            </div>
+            <button id="postio">Submit</button>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

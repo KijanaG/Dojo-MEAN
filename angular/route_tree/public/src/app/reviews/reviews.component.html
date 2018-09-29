@@ -1,0 +1,13 @@
+<div style="width: 600px;height: 600px;border:3px solid purple;">
+    <h1>Reviews Works</h1>
+    <button [routerLink]="['/']"> Home from Reviews</button>
+    <br>
+    <hr style="border: 1px solid black;">
+    <hr style="border: 1px solid black;">
+    <br>
+    <h2>Enter the abyss of nested routes...</h2>
+    <button [routerLink]="['details', 5]">Details</button>&nbsp;
+    <button [routerLink]="['author', 9]">Author</button>&nbsp;
+    <button [routerLink]="['all', 3]">All</button>
+    <router-outlet></router-outlet>
+</div>

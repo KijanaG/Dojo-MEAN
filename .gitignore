@@ -1,0 +1,9 @@
+*pem
+**/node_modules/
+belt_exam/
+*ts
+*json
+*map
+*txt
+*DS_Store
+*zip
